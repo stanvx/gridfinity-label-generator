@@ -155,7 +155,7 @@ A few configs are included as starting points:
 
 ## Credits
 
-- OpenSCAD label model and fastener icons by [CullenJWebb](https://makerworld.com/en/models/578922) (Cullenect Labels)
+- OpenSCAD label model and fastener icons by [CullenJWebb](https://makerworld.com/models/446624) (Cullenect Labels)
 - Open Sans font by Steve Matteson, licensed under Apache License 2.0
 
 ## License
