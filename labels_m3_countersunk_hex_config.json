@@ -1,0 +1,31 @@
+{
+  "settings": {
+    "openscad_path": "/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD",
+    "output_dir": "exports/M3CountersunkHex",
+    "filaments": {
+      "base": 1,
+      "text": 2
+    }
+  },
+  "defaults": {
+    "fastener_head": "countersunk",
+    "fastener_shaft": "machine",
+    "fastener_threads": "full",
+    "fastener_driver": "hex",
+    "fastener_orientation": "landscape",
+    "fastener_scale": 1.0,
+    "font": "Open Sans",
+    "font_style": "ExtraBold",
+    "font_size": 4.5
+  },
+  "labels": [
+    {"name": "M3x4", "text": "M3×4"},
+    {"name": "M3x6", "text": "M3×6"},
+    {"name": "M3x8", "text": "M3×8"},
+    {"name": "M3x10", "text": "M3×10"},
+    {"name": "M3x12", "text": "M3×12"},
+    {"name": "M3x16", "text": "M3×16"},
+    {"name": "M3x20", "text": "M3×20", "fastener_scale": 0.85},
+    {"name": "M3x25", "text": "M3×25", "fastener_scale": 0.55, "fastener_orientation": "landscape", "fastener_threads": "partial"}
+  ]
+}

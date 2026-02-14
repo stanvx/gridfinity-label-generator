@@ -1,0 +1,16 @@
+# Generated outputs
+exports/**
+!exports/.gitkeep
+
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor/tools
+.ruff_cache/
+
+# Large binary files in root
+/*.3mf
