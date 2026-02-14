@@ -40,11 +40,8 @@ NS_MATERIAL = "http://schemas.microsoft.com/3dmanufacturing/material/2015/02"
 NS_PRODUCTION = "http://schemas.microsoft.com/3dmanufacturing/production/2015/06"
 
 
-def load_config(config_path: Path = None) -> dict:
+def load_config(config_path: Path) -> dict:
     """Load label configuration from JSON file."""
-    if config_path is None:
-        config_path = SCRIPT_DIR / "labels_config.json"
-
     with open(config_path) as f:
         return json.load(f)
 
@@ -519,7 +516,8 @@ def main():
         "--config",
         "-c",
         type=Path,
-        help="Path to config file (default: labels_config.json)",
+        required=True,
+        help="Path to config JSON file (create one with: python create_config.py)",
     )
     parser.add_argument(
         "--output", "-o", type=Path, help="Output directory (default: from config)"
@@ -533,6 +531,10 @@ def main():
     args = parser.parse_args()
 
     # Load configuration
+    if not args.config.exists():
+        print(f"Error: config file not found: {args.config}", file=sys.stderr)
+        print("Create one with: python create_config.py", file=sys.stderr)
+        sys.exit(1)
     config = load_config(args.config)
 
     # Determine output directory

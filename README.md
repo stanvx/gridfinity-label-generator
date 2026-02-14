@@ -26,13 +26,17 @@ Each label is generated in two passes through OpenSCAD, then merged into a singl
 - Python 3.10+
 - Bambu Studio for printing
 
-### Generate all labels from the default config
+### Create a config, then generate
 
 ```bash
-python generate_labels.py
+# Step 1: create your config
+python create_config.py
+
+# Step 2: generate labels
+python generate_labels.py --config my_labels.json
 ```
 
-Output goes to `exports/`. Open any `.3mf` in Bambu Studio -- colors are already assigned:
+Output goes to the directory specified in your config. Open any `.3mf` in Bambu Studio -- colors are already assigned:
 
 - **Filament 1**: label body
 - **Filament 2**: text and fastener icon
@@ -40,23 +44,20 @@ Output goes to `exports/`. Open any `.3mf` in Bambu Studio -- colors are already
 ### Other options
 
 ```bash
-# Single label
-python generate_labels.py --label M3x10
+# Single label from a config
+python generate_labels.py --config my_labels.json --label M3x10
 
 # First label only (quick test)
-python generate_labels.py --test
+python generate_labels.py --config my_labels.json --test
 
-# Different config file
-python generate_labels.py --config labels_m3_countersunk_hex_config.json
-
-# Custom output directory
-python generate_labels.py --output exports/MyKit
+# Custom output directory (overrides config)
+python generate_labels.py --config my_labels.json --output exports/MyKit
 
 # Save PNG previews alongside the 3MFs
-python generate_labels.py --preview-dir exports/previews
+python generate_labels.py --config my_labels.json --preview-dir exports/previews
 
 # Control parallelism
-python generate_labels.py --workers 4
+python generate_labels.py --config my_labels.json --workers 4
 ```
 
 ## Creating a Config File
@@ -134,11 +135,12 @@ Per-label keys override the defaults for that label only. Any key omitted on a l
 | `font_size` | number (mm) | Text size in millimetres |
 | `text2` | string | Optional second line of text |
 
-## Included Configs
+## Example Configs
+
+A few configs are included as starting points:
 
 | File | Description |
 |------|-------------|
-| `labels_config.json` | Mixed M-series: pan head screws + knurled nuts |
 | `labels_m3_countersunk_hex_config.json` | M3 countersunk screws, hex socket driver |
 | `labels_m3_flathead_hex_config.json` | M3 countersunk screws, hex socket driver, extended range |
 | `labels_m3_flathead_screwdriver_config.json` | M3 countersunk screws, slot driver |
